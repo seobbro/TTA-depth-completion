@@ -1,4 +1,4 @@
-# TTA-depth-completion
+# Test-Time Adaptation for Depth Completion
 
 
 [CVPR 2024] 
