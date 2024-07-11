@@ -110,7 +110,7 @@ training/void
 testing/void
 ```
 
-## Training Mondi<a name="training-ProxyTTA"></a>
+## Training ProxyTTA <a name="training-ProxyTTA"></a>
 Bash file will be uploaded soon! (~Jul 12th)
 ```
 bash
