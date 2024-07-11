@@ -1,11 +1,6 @@
 # Test-Time Adaptation for Depth Completion
 
-
-[CVPR 2024] 
-Code will be released soon!
 PyTorch implementation of *Test-Time Adaptation for Depth Completion*
-
-Published in the proceedings of CVPR 2022
 
 [[publication]]() [[arxiv]](https://arxiv.org/pdf/2402.03312.pdf) [[poster]]() [[talk]]()
 
