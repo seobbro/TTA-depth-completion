@@ -56,6 +56,7 @@ pip install -r requirements-rtx.txt
 
 ## Setting up your datasets <a name="set-up-datasets"></a>
 
+In setup folder, we uploaded the python scripts for setting up test datasets.
 
 For datasets, we will use [KITTI][kitti_dataset] for outdoors and [VOID][void_github] for indoors. Below are instructions to run our setup script for each dataset. The setup script will (1) store images as sequential temporal triplets and (2) produce paths for training, validation and testing splits.
 ```
