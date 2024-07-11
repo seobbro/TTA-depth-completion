@@ -1,0 +1,12 @@
+setup.py
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/vision.cpp
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/deform_cpu.cpp
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/deform_psroi_pooling_cpu.cpp
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/modulated_deform_cpu.cpp
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/deform_conv_cuda.cu
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/deform_psroi_pooling_cuda.cu
+/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/modulated_deform_conv_cuda.cu
+DCN.egg-info/PKG-INFO
+DCN.egg-info/SOURCES.txt
+DCN.egg-info/dependency_links.txt
+DCN.egg-info/top_level.txt

@@ -1,0 +1,32 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /gpfs/loomis/apps/avx/software/CUDA/10.1.105/bin/nvcc
+
+cflags = -pthread -B /gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/include -fPIC -O2 -isystem /gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/include -fPIC -DWITH_CUDA -I/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include/TH -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include/THC -I/gpfs/loomis/apps/avx/software/CUDA/10.1.105/include -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/include/python3.8 -c
+post_cflags = -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=DCN -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14
+cuda_cflags = -DWITH_CUDA -I/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include/TH -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/lib/python3.8/site-packages/torch/include/THC -I/gpfs/loomis/apps/avx/software/CUDA/10.1.105/include -I/gpfs/gibbs/project/panda/hp454/conda_envs/py38tta/include/python3.8 -c
+cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=DCN -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_75,code=sm_75 -std=c++14
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  command = $nvcc $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/deform_cpu.o: compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/deform_cpu.cpp
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/deform_psroi_pooling_cpu.o: compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/deform_psroi_pooling_cpu.cpp
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/modulated_deform_cpu.o: compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cpu/modulated_deform_cpu.cpp
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/deform_conv_cuda.o: cuda_compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/deform_conv_cuda.cu
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/deform_psroi_pooling_cuda.o: cuda_compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/deform_psroi_pooling_cuda.cu
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/modulated_deform_conv_cuda.o: cuda_compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/cuda/modulated_deform_conv_cuda.cu
+build /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/build/temp.linux-x86_64-cpython-38/vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/vision.o: compile /vast/palmer/scratch/panda/hp454/test-time-adapt-depth/external_src/NLSPN/src/model/deformconv/src/vision.cpp
+
+
+
+
+
