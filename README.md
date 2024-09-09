@@ -13,7 +13,7 @@ If this work is useful to you, please cite our paper:
 
 **News**
 ```
-2024.09.09: I got back to the school, and the full repository will be available by Sep 15th.
+2024.09.09: I got back to the school, and the full repository including bash script and data setup will be available by Sep 15th.
 ```
 **Table of Contents**
 [About ProxyTTA](#about-ProxyTTA)
