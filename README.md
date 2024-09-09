@@ -7,10 +7,14 @@ PyTorch implementation of *Test-Time Adaptation for Depth Completion*
 Model have been tested on Ubuntu 20.04 using Python 3.7, 3.8,  PyTorch 1.10.1 and 1.11.0 (CUDA 11.1)
 
 
-Authors: [Hyoungseob Park](https://www.linkedin.com/in/tian-yu-liu), [Anjali Gupta](https://agrawalparth10.github.io/), [Alex Wong](https://www.cs.yale.edu/homes/wong-alex/)
+Authors: [Hyoungseob Park](https://www.linkedin.com/in/hyoungseob-park-00692a188/), [Anjali Gupta](https://www.anjaliwgupta.com/), [Alex Wong](https://www.cs.yale.edu/homes/wong-alex/)
 
 If this work is useful to you, please cite our paper:
 
+**News**
+```
+2024.09.09: I got back to the school, and the full repository will be available by Sep 15th.
+```
 **Table of Contents**
 [About ProxyTTA](#about-ProxyTTA)
 [Setting up your virtual environment](#set-up-virtual-environment)
