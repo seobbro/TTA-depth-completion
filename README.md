@@ -9,29 +9,25 @@ Model have been tested on Ubuntu 20.04 using Python 3.7, 3.8,  PyTorch 1.10.1 an
 
 Authors: [Hyoungseob Park](https://www.linkedin.com/in/hyoungseob-park-00692a188/), [Anjali Gupta](https://www.anjaliwgupta.com/), [Alex Wong](https://www.cs.yale.edu/homes/wong-alex/)
 
-If this work is useful to you, please cite our paper:
-
-
-
 ## News
-- [09.09] ⭐️ The current README file is for **Video-LLaMA-2** (LLaMA-2-Chat as language decoder) only, instructions for using the previous version of Video-LLaMA (Vicuna as language decoder) can be found at [here](https://github.com/DAMO-NLP-SG/Video-LLaMA/blob/main/README_Vicuna.md).
-- [08.03] 🚀🚀 Release **Video-LLaMA-2** with [Llama-2-7B/13B-Chat](https://huggingface.co/meta-llama) as language decoder
-    - **NO** delta weights and separate Q-former weights anymore, full weights to run Video-LLaMA are all here :point_right: [[7B](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-7B-Finetuned)][[13B](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-13B-Finetuned)] 
-    - Allow further customization starting from our pre-trained checkpoints [[7B-Pretrained](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-7B-Pretrained)] [[13B-Pretrained](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-13B-Pretrained)]
+- [09.16] 🚀🚀 Release **Checkpoints (after stage 1 and 2) bash scripts, and data setup scripts!**
+- [09.09] ⭐️ I just came back from the internship, and the full repository including bash script and data setup will be available by Sep 16th. 
 
 
-**News**
-```
-2024.09.09: I got back to the school, and the full repository including bash script and data setup will be available by Sep 15th.
-```
 ## Table of Centents
 [About ProxyTTA](#about-ProxyTTA)
+
+[Poster](#poster)
 
 [Setting up your virtual environment](#set-up-virtual-environment)
 
 [Setting up your datasets](#set-up-datasets)
 
-[Training your models](#training-ProxyTTA)
+[Checkpoint release](#checkpoint-release)
+
+[Training ProxyTTA](#training-ProxyTTA)
+
+[Citation](#citation)
 
 [Related projects](#related-projects)
 
@@ -55,6 +51,13 @@ we investigate a test-time adaptation approach that learns an embedding for guid
 <center>
 <img src="figures/demo.gif">
 </center>
+
+## Poster <a name="poster"></a>
+
+
+<p align="center" width="100%">
+<a target="_blank"><img src="figures/CVPR_ProxyTTA_Poster.png" alt="ProxyTTA_paper" style="width: 80%; min-width: 200px; display: block; margin: auto;"></a>
+</p>
 
 
 ## Setting up your virtual environment <a name="set-up-virtual-environment"></a>
@@ -137,19 +140,22 @@ Every target dataset setup scripts should be available in ``` setup/<target_data
 Our experiment on Waymo is using the validation set of Waymo. You should subsample the Waymo testing set 
 
 
+
+## Checkpoint release <a name="checkpoint-release"></a>
+Checkpoints are released in this [link][checkpoint-link].
+
+We provide [indoor / outdoor] prepared checkpoints (after stage1 & 2) of three models evaluated in our paper.
+
+For those who want to do the stage 1 and stage 2 for different dataset, you can find NLSPN / CostDCNet pretrained models as well.
+
 ## Training ProxyTTA <a name="training-ProxyTTA"></a>
 (09.16) Bash files are uploaded!
 
 In ```bash/``` directory, we have each model's training indoor/outdoor adaptation scenario.
 
-## Citation ## 
+## Citation <a name="citation"></a>
 
 If you use our code and methods in your work, please cite the following:
-
-- [MSGCHN][msgchn_github]: A Supervised multi-scale guided cascade hourglass network (MSGCHN).
-- [NLSPN][nlspn_github]: A Supervised End-to-End Non-local Spatial Propagation network (NLSPN) for Depth Completion.
-- [CostDCNet][costdcnet_github]: Supervised Depth completion network that exploits the 3D information, three options to make an RGB-D feature volume, and a per-plane pixel shuffle for efficient volume upsampling.
-
 
 ```
 @inproceedings{park2024test,
@@ -159,7 +165,16 @@ If you use our code and methods in your work, please cite the following:
   pages={20519--20529},
   year={2024}
 }
+```
 
+Don't forget to cite the depth completion models in our paper!
+
+- [MSGCHN][msgchn_github]: A Supervised multi-scale guided cascade hourglass network (MSGCHN).
+- [NLSPN][nlspn_github]: A Supervised End-to-End Non-local Spatial Propagation network (NLSPN) for Depth Completion.
+- [CostDCNet][costdcnet_github]: Supervised Depth completion network that exploits the 3D information, three options to make an RGB-D feature volume, and a per-plane pixel shuffle for efficient volume upsampling.
+
+
+```
 @inproceedings{li2020multi,
   title={A Multi-Scale Guided Cascade Hourglass Network for Depth Completion},
   author={Li, Ang and Yuan, Zejian and Ling, Yonggen and Chi, Wanchao and Zhang, Chong and others},
@@ -217,5 +232,6 @@ You may also find the following projects useful:
 [nlspn_github]: https://github.com/zzangjinsun/NLSPN_ECCV20
 [msgchn_github]: https://github.com/anglixjtu/msg_chn_wacv20
 [costdcnet_github]: https://github.com/kamse/CostDCNet
+[checkpoint-link]: https://drive.google.com/drive/folders/1OIwg8HChiZeYKt3WofzQw0mKtrphfyJL?usp=sharing
 ## License and disclaimer <a name="license-disclaimer"></a>
 This software is property of Yale University, and is provided free of charge for research purposes only. 
