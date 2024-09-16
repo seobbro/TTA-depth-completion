@@ -2,7 +2,7 @@
 
 PyTorch implementation of *Test-Time Adaptation for Depth Completion*
 
-[[publication]]() [[arxiv]](https://arxiv.org/pdf/2402.03312.pdf) [[poster]]() [[talk]]()
+[[publication]](https://arxiv.org/pdf/2402.03312.pdf) [[arxiv]](https://arxiv.org/pdf/2402.03312.pdf) [[poster]]() [[talk]]()
 
 Model have been tested on Ubuntu 20.04 using Python 3.7, 3.8,  PyTorch 1.10.1 and 1.11.0 (CUDA 11.1)
 
@@ -11,16 +11,30 @@ Authors: [Hyoungseob Park](https://www.linkedin.com/in/hyoungseob-park-00692a188
 
 If this work is useful to you, please cite our paper:
 
+
+
+## News
+- [09.09] ⭐️ The current README file is for **Video-LLaMA-2** (LLaMA-2-Chat as language decoder) only, instructions for using the previous version of Video-LLaMA (Vicuna as language decoder) can be found at [here](https://github.com/DAMO-NLP-SG/Video-LLaMA/blob/main/README_Vicuna.md).
+- [08.03] 🚀🚀 Release **Video-LLaMA-2** with [Llama-2-7B/13B-Chat](https://huggingface.co/meta-llama) as language decoder
+    - **NO** delta weights and separate Q-former weights anymore, full weights to run Video-LLaMA are all here :point_right: [[7B](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-7B-Finetuned)][[13B](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-13B-Finetuned)] 
+    - Allow further customization starting from our pre-trained checkpoints [[7B-Pretrained](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-7B-Pretrained)] [[13B-Pretrained](https://huggingface.co/DAMO-NLP-SG/Video-LLaMA-2-13B-Pretrained)]
+
+
 **News**
 ```
 2024.09.09: I got back to the school, and the full repository including bash script and data setup will be available by Sep 15th.
 ```
-**Table of Contents**
+## Table of Centents
 [About ProxyTTA](#about-ProxyTTA)
+
 [Setting up your virtual environment](#set-up-virtual-environment)
+
 [Setting up your datasets](#set-up-datasets)
+
 [Training your models](#training-ProxyTTA)
+
 [Related projects](#related-projects)
+
 [License and disclaimer](#license-disclaimer)
 
 ## About ProxyTTA <a name="about-ProxyTTA"></a>
@@ -52,7 +66,7 @@ source ~/venvs/proxytta/bin/activate
 export TMPDIR=./
 ```
 
-Nvidia RTX achitectures i.e. 20 and 30 series (CUDA 11.1)
+Nvidia RTX achitectures i.e. 20, 30, and 40 series (CUDA 11.1)
 ```
 pip install torch==1.10.1+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements-rtx.txt
@@ -115,15 +129,68 @@ training/void
 testing/void
 ```
 
+**For the other datasets**
+
+Every target dataset setup scripts should be available in ``` setup/<target_dataset> ``` directory.
+
+**Notice for Waymo dataset**
+Our experiment on Waymo is using the validation set of Waymo. You should subsample the Waymo testing set 
+
+
 ## Training ProxyTTA <a name="training-ProxyTTA"></a>
-Bash file will be uploaded soon! (~Jul 12th)
+(09.16) Bash files are uploaded!
+
+In ```bash/``` directory, we have each model's training indoor/outdoor adaptation scenario.
+
+## Citation ## 
+
+If you use our code and methods in your work, please cite the following:
+
+- [MSGCHN][msgchn_github]: A Supervised multi-scale guided cascade hourglass network (MSGCHN).
+- [NLSPN][nlspn_github]: A Supervised End-to-End Non-local Spatial Propagation network (NLSPN) for Depth Completion.
+- [CostDCNet][costdcnet_github]: Supervised Depth completion network that exploits the 3D information, three options to make an RGB-D feature volume, and a per-plane pixel shuffle for efficient volume upsampling.
+
+
 ```
-bash
+@inproceedings{park2024test,
+  title={Test-Time Adaptation for Depth Completion},
+  author={Park, Hyoungseob and Gupta, Anjali and Wong, Alex},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={20519--20529},
+  year={2024}
+}
+
+@inproceedings{li2020multi,
+  title={A Multi-Scale Guided Cascade Hourglass Network for Depth Completion},
+  author={Li, Ang and Yuan, Zejian and Ling, Yonggen and Chi, Wanchao and Zhang, Chong and others},
+  booktitle={The IEEE Winter Conference on Applications of Computer Vision},
+  pages={32--40},
+  year={2020}
+}
+@inproceedings{park2020non,
+  title={Non-local spatial propagation network for depth completion},
+  author={Park, Jinsun and Joo, Kyungdon and Hu, Zhe and Liu, Chi-Kuei and So Kweon, In},
+  booktitle={Computer Vision--ECCV 2020: 16th European Conference, Glasgow, UK, August 23--28, 2020, Proceedings, Part XIII 16},
+  pages={120--136},
+  year={2020},
+  organization={Springer}
+}
+
+@inproceedings{kam2022costdcnet,
+  title={CostDCNet: Cost Volume Based Depth Completion for a Single RGB-D Image},
+  author={Kam, Jaewon and Kim, Jungeon and Kim, Soongjin and Park, Jaesik and Lee, Seungyong},
+  booktitle={Computer Vision--ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23--27, 2022, Proceedings, Part II},
+  pages={257--274},
+  year={2022},
+  organization={Springer}
+}
 ```
+
+
+
 
 ## Related projects <a name="related-projects"></a>
 You may also find the following projects useful:
-
 - [KBNet][kbnet_github]: *Unsupervised Depth Completion with Calibrated Backprojection Layers*. A fast (15 ms/frame) and accurate unsupervised sparse-to-dense depth completion method that introduces a calibrated backprojection layer that improves generalization across sensor platforms. This work is published as an oral paper in the International Conference on Computer Vision (ICCV) 2021.
 - [ScaffNet][scaffnet_github]: *Learning Topology from Synthetic Data for Unsupervised Depth Completion*. An unsupervised sparse-to-dense depth completion method that first learns a map from sparse geometry to an initial dense topology from synthetic data (where ground truth comes for free) and amends the initial estimation by validating against the image. This work is published in the Robotics and Automation Letters (RA-L) 2021 and the International Conference on Robotics and Automation (ICRA) 2021.
 - [AdaFrame][adaframe_github]: *An Adaptive Framework for Learning Unsupervised Depth Completion*. An adaptive framework for learning unsupervised sparse-to-dense depth completion that balances data fidelity and regularization objectives based on model performance on the data. This work is published in the Robotics and Automation Letters (RA-L) 2021 and the International Conference on Robotics and Automation (ICRA) 2021.
@@ -133,5 +200,22 @@ You may also find the following projects useful:
 - [GeoSup][geosup_github]: *Geo-Supervised Visual Depth Prediction*. A single image depth prediction method developed by the authors, published in the Robotics and Automation Letters (RA-L) 2019 and the International Conference on Robotics and Automation (ICRA) 2019. This work was awarded **Best Paper in Robot Vision** at ICRA 2019.
 - [AdaReg][adareg_github]: *Bilateral Cyclic Constraint and Adaptive Regularization for Unsupervised Monocular Depth Prediction.* A single image depth prediction method that introduces adaptive regularization. This work was published in the proceedings of Conference on Computer Vision and Pattern Recognition (CVPR) 2019.
 
+[kitti_dataset]: http://www.cvlibs.net/datasets/kitti/
+[nyu_v2_dataset]: https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html
+[void_github]: https://github.com/alexklwong/void-dataset
+[voiced_github]: https://github.com/alexklwong/unsupervised-depth-completion-visual-inertial-odometry
+[scaffnet_github]: https://github.com/alexklwong/learning-topology-synthetic-data
+[adaframe_github]: https://github.com/alexklwong/adaframe-depth-completion
+[kbnet_github]: https://github.com/alexklwong/calibrated-backprojection-network
+[xivo_github]: https://github.com/ucla-vision/xivo
+[geosup_github]: https://github.com/feixh/GeoSup
+[adareg_github]: https://github.com/alexklwong/adareg-monodispnet
+[sups_github]: https://github.com/alexklwong/stereoscopic-universal-perturbations
+[stereopagnosia_github]: https://github.com/alexklwong/stereopagnosia
+[targeted_attacks_monodepth_github]: https://github.com/alexklwong/targeted-adversarial-perturbations-monocular-depth
+[spin_github]: https://github.com/alexklwong/subpixel-embedding-segmentation
+[nlspn_github]: https://github.com/zzangjinsun/NLSPN_ECCV20
+[msgchn_github]: https://github.com/anglixjtu/msg_chn_wacv20
+[costdcnet_github]: https://github.com/kamse/CostDCNet
 ## License and disclaimer <a name="license-disclaimer"></a>
 This software is property of Yale University, and is provided free of charge for research purposes only. 
