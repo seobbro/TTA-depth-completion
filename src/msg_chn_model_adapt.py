@@ -1,4 +1,4 @@
-src/msg_chn_model_adapt.pyimport torch
+import torch
 import os, sys
 import loss_utils
 sys.path.insert(0, os.path.join('external_src', 'MSG_CHN'))
